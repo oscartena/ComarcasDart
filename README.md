@@ -3,13 +3,17 @@
 Este programa de línea de comandos en Dart te permite obtener información sobre las comarcas y provincias del País Valencià utilizando un API REST. Puedes consultar un listado de comarcas para una provincia indicada o obtener información detallada sobre una comarca específica.
 
 **Requisitos Previos**
+
 Asegúrate de tener Dart y Flutter instalados en tu entorno de desarrollo. Además, el programa utiliza la biblioteca http para realizar solicitudes HTTP, por lo que asegúrate de que las dependencias estén instaladas.
 
 La aplicación presenta dos comandos principales:
-1.comarques: Para obtener un listado de comarcas de una provincia.
-2infocomarca: Para obtener información detallada sobre una comarca específica.
+
+1. comarques: Para obtener un listado de comarcas de una provincia.
+
+2. infocomarca: Para obtener información detallada sobre una comarca específica.
 
 **Uso**
+
 Ejecuta el programa desde la línea de comandos utilizando el siguiente formato:
 
 dart run consulta_comarcas.dart [comando] [nombreProvincia/nombreComarca]
