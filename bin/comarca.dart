@@ -20,17 +20,17 @@ class Comarca {
 
   // Constructor desde un JSON
   Comarca.fromJSON(Map<String, dynamic> json)
-      : comarca = json['nombre'],
+      : comarca = json['nombre'] ?? 'Nombre no disponible',
         capital = json['capital'],
         poblacion = json['poblacion'],
         img = json['img'],
         desc = json['desc'],
-        latitud = (json['coordenadas'] as List<dynamic>?)
-                ?.elementAt(0)
-                ?.toDouble() ?? 0.0,
-        longitud = (json['coordenadas'] as List<dynamic>?)
-                ?.elementAt(1)
-                ?.toDouble() ?? 0.0;
+        latitud = _parseCoordenada(json, 0),
+        longitud = _parseCoordenada(json, 1);
+
+  static double? _parseCoordenada(Map<String, dynamic> json, int index) {
+  return json['coordenadas'] != null ? json['coordenadas'][index] : null;
+  }
 
 
   @override
@@ -40,6 +40,10 @@ class Comarca {
         'población: ${poblacion ?? "No disponible"}\n'
         'Imagen: ${img ?? "No disponible"}\n'
         'descripción: ${desc ?? "No disponible"}\n'
-        'Coordenadas: ($latitud, $longitud)';
+        'Coordenadas: (${_formatCoordenada(latitud)}, ${_formatCoordenada(longitud)})';
+  }
+
+  String _formatCoordenada(double? coordenada) {
+    return coordenada?.toStringAsFixed(7) ?? 'No disponible';
   }
 }
